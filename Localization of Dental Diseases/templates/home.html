@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Localization of Dental Diseases</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function showFileName(input) {
+            if (input.files.length > 0) {
+                document.getElementById('upload-status').innerText = "Image uploaded successfully!";
+                document.getElementById('upload-status').style.color = "green";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Localization of Dental Diseases</h1>
+    </div>
+    <div class="home-container">
+        <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+            <input id="file-upload" type="file" name="file" required style="display: none;" onchange="showFileName(this)">
+            <button type="button" class="upload-button" onclick="document.getElementById('file-upload').click()">Upload</button>
+            <br><br>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+        <p id="upload-status"></p>
+    </div>
+</body>
+</html>
